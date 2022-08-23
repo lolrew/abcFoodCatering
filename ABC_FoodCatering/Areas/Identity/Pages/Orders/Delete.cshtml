@@ -1,0 +1,58 @@
+﻿@page
+@model ABC_FoodCatering.Areas.Identity.Pages.Orders.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Order</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Order.foodDes)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Order.foodDes)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Order.deliveryAddress)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Order.deliveryAddress)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Order.deliveryDateAndTime)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Order.deliveryDateAndTime)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Order.quantity)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Order.quantity)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Order.clientName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Order.clientName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Order.orderDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Order.orderDate)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="Order.orderID" />
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-page="./Index">Back to List</a>
+    </form>
+</div>

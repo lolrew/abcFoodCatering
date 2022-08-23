@@ -42,9 +42,9 @@ namespace ABC_FoodCatering
             services.AddAuthentication(opts =>
             {
                 //add default authentication scheme and JWT authentication type with standard setting.
-                opts.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
-                opts.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                opts.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                //opts.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+                //opts.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                //opts.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
             })
             .AddJwtBearer(cfg => {
                 cfg.RequireHttpsMetadata = false;
@@ -103,7 +103,7 @@ namespace ABC_FoodCatering
             //adding custom roles
             var RoleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
             var UserManager = serviceProvider.GetRequiredService<UserManager<IdentityUser>>();
-            string[] roleNames = { "Admin", "Member" };
+            string[] roleNames = { "Admin", "Member", "Client" };
             IdentityResult roleResult;
             foreach (var roleName in roleNames)
             {

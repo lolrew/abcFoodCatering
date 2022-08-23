@@ -1,0 +1,78 @@
+﻿@page
+@model ABC_FoodCatering.Areas.Identity.Pages.Orders.IndexModel
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+@if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+{
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Order[0].foodDes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Order[0].deliveryAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Order[0].deliveryDateAndTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Order[0].quantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Order[0].clientName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Order[0].orderDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Order)
+{
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.foodDes)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.deliveryAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.deliveryDateAndTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.clientName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.orderDate)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.orderID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.orderID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.orderID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+}
+else
+{
+    <p>
+        You do not have access to this page
+    </p>
+}
